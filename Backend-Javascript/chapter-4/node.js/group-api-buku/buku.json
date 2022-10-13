@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title":"rem",
+    "published_date": "02-09-2022"
+  },
+  {
+    "id": 2,
+    "title":"rem book",
+    "published_date": "23-09-2022"
+  },
+  {
+    "id": 3,
+    "title":"book rem",
+    "published_date": "24-09-2022"
+  }
+]
