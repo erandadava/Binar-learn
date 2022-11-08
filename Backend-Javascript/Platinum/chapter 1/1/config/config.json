@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_db_development",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_db_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_db_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
