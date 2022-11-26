@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_1_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_1_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "plat_1_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

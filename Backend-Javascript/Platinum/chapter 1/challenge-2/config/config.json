@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "chall_2_dev",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "chall_2_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "chall_2_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

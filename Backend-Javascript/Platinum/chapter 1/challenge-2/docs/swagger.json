@@ -1,0 +1,336 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Product - OpenAPI 3.0",
+    "contact": {
+      "email": "erandadava@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/api/v0"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Product",
+      "description": "Everything about your Products"
+    }
+
+  ],
+  "paths": {
+    "/product": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Find All Product",
+        "description": "Find all Product with approved value is true",
+        "operationId": "findAllProduct",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Add a new Product",
+        "description": "Add a new Product",
+        "operationId": "AddNewProduct",
+        "requestBody": {
+          "description": "Create a new Product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addProduct"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddProduct"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/product/{productId}":{
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update an Product",
+        "description": "Update an Product",
+        "operationId": "UpdateProduct",
+        "parameters":[{
+          "name": "productId",
+          "in": "path",
+          "description": "id of Product",
+          "required": true,
+          "schema":{
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "Update an Product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addProduct"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddProduct"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete an Product",
+        "description": "delete an Product",
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "id of Product",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Product value"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+            "type": "array",
+            "items": {
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "name" :{
+                  "type":"string",
+                  "example":""
+                },
+                "qty" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "price" :{
+                  "type":"string",
+                  "example":""
+                },
+                "image" :{
+                  "type":"string",
+                  "example":""
+                },
+                "category" :{
+                  "type":"string",
+                  "example":""
+                },
+                "description" :{
+                  "type":"string",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+            }
+          }
+        }
+      },
+      "addProduct": {
+        "type": "object",
+        "properties":{
+          "name":{
+            "type": "string",
+            "format": "int64",
+            "example": "produk indonesia 1"
+          },
+          "qty": {
+            "type": "integer",
+            "example": 3
+          },
+          "price":{
+            "type": "integer",
+            "example": 20000
+          },
+          "image":{
+            "type": "string",
+            "format": "int64",
+            "example": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+          },
+          "category":{
+            "type": "string",
+            "format": "int64",
+            "example": "Tanaman"
+          },
+          "description":{
+            "type": "string",
+            "format": "int64",
+            "example": "produk indonesia 1 description"
+          }
+        }
+      },
+      "SuccesfullAddProduct": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "name" :{
+                  "type":"string",
+                  "example":""
+                },
+                "qty" :{
+                  "type":"string",
+                  "example":""
+                },
+                "price" :{
+                  "type":"string",
+                  "example":""
+                },
+                "image" :{
+                  "type":"string",
+                  "example":""
+                },
+                "category" :{
+                  "type":"string",
+                  "example":""
+                },
+                "description" :{
+                  "type":"string",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://petstore3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  }
+}

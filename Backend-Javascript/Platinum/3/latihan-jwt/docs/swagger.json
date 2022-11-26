@@ -1,0 +1,441 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Product - OpenAPI 3.0",
+    "contact": {
+      "email": "erandadava@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3005"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Product",
+      "description": "Everything about your Product"
+    }
+
+  ],
+  "paths": {
+    "/register":{
+      "post":{
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register",
+        "description": "Register",
+        "operationId": "Register",
+        "requestBody": {
+          "description": "Register your account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"object",
+                  "properties":{
+                    "status":{
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 200
+                    },
+                    "message":{
+                      "type": "string",
+                      "example": "Successful"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login":{
+      "post":{
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "description": "Login",
+        "operationId": "Login",
+        "requestBody": {
+          "description": "Login your account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"object",
+                  "properties":{
+                    "status":{
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 200
+                    },
+                    "message":{
+                      "type": "string",
+                      "example": "Successful"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Find All Product",
+        "description": "Find all Product with approved value is true",
+        "operationId": "findAllProduct",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "authtoken": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Add a new Product",
+        "description": "Add a new Product",
+        "operationId": "AddNewProduct",
+        "requestBody": {
+          "description": "Create a new Product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addProduct"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddProduct"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "authtoken": []
+          }
+        ]
+      }
+    },
+    "/product/{productId}":{
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update an Product",
+        "description": "Update an Product",
+        "operationId": "UpdateProduct",
+        "parameters":[{
+          "name": "productId",
+          "in": "path",
+          "description": "id of Product",
+          "required": true,
+          "schema":{
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "Update an Product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addProduct"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddProduct"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "authtoken": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete an Product",
+        "description": "delete an Product",
+        "operationId": "deleteproduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "id of Product",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid product value"
+          }
+        },
+        "security": [
+          {
+            "authtoken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login":{
+        "type": "object",
+        "properties":{
+          "email":{
+            "type":"string",
+            "example":"erandadava@gmail.com"
+          },
+          "password":{
+            "type": "string",
+            "example": "123"
+          }
+        }
+      },
+      "Product": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+            "type": "array",
+            "items": {
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "product_name" :{
+                  "type":"string",
+                  "example":""
+                },
+                "qty" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "is_published" :{
+                  "type":"boolean",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+            }
+          }
+        }
+      },
+      "addProduct": {
+        "type": "object",
+        "properties":{
+          "product_name":{
+            "type": "string",
+            "format": "int64",
+            "example": "Hello World Produk"
+          },
+          "qty": {
+            "type": "integer",
+            "example": 12000
+          },
+          "is_published": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "SuccesfullAddProduct": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "product_name" :{
+                  "type":"string",
+                  "example":""
+                },
+                "qty" :{
+                  "type":"string",
+                  "example":""
+                },
+                "is_published" :{
+                  "type":"boolean",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "##default"
+        }
+      }
+    },
+    "securitySchemes": {
+      "authtoken": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header"
+      }
+    }
+  }
+}

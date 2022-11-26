@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "jwt_latihan_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "jwt_latihan_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "kemangtimur12",
+    "database": "jwt_latihan_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

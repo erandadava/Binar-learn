@@ -1,0 +1,589 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Article and Item - OpenAPI 3.0",
+    "contact": {
+      "email": "erandadava@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v0"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Article",
+      "description": "Everything about your Article"
+    },
+    {
+      "name": "Item",
+      "description": "Items API"
+    }
+
+  ],
+  "paths": {
+    "/article": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Find All Article",
+        "description": "Find all article with approved value is true",
+        "operationId": "findAllArticle",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Article"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Add a new article",
+        "description": "Add a new article",
+        "operationId": "AddNewArticle",
+        "requestBody": {
+          "description": "Create a new article",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addArticle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddArticle"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/article/{articleId}":{
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Update an article",
+        "description": "Update an article",
+        "operationId": "UpdateArticle",
+        "parameters":[{
+          "name": "articleId",
+          "in": "path",
+          "description": "id of Article",
+          "required": true,
+          "schema":{
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "Update an article",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addArticle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddArticle"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Delete an article",
+        "description": "delete an article",
+        "operationId": "deletearticle",
+        "parameters": [
+          {
+            "name": "articleId",
+            "in": "path",
+            "description": "id of Article",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid article value"
+          }
+        }
+      }
+    },
+    "/item": {
+      "get": {
+        "tags": [
+          "Item"
+        ],
+        "summary": "Find All Item",
+        "description": "Find all Item with approved value is true",
+        "operationId": "findAllItem",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Item"
+        ],
+        "summary": "Add a new Item",
+        "description": "Add a new Item",
+        "operationId": "AddNewItem",
+        "requestBody": {
+          "description": "Create a new Item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addItem"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddItem"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/item/{itemId}":{
+      "put": {
+        "tags": [
+          "Item"
+        ],
+        "summary": "Update an Item",
+        "description": "Update an Item",
+        "operationId": "UpdateItem",
+        "parameters":[{
+          "name": "itemId",
+          "in": "path",
+          "description": "id of Item",
+          "required": true,
+          "schema":{
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "Update an Item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addItem"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccesfullAddItem"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Item"
+        ],
+        "summary": "Delete an Item",
+        "description": "delete an Item",
+        "operationId": "deleteItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "id of Item",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Item value"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Article": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+            "type": "array",
+            "items": {
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "title" :{
+                  "type":"string",
+                  "example":""
+                },
+                "body" :{
+                  "type":"string",
+                  "example":""
+                },
+                "approved" :{
+                  "type":"boolean",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+            }
+          }
+        }
+      },
+      "addArticle": {
+        "type": "object",
+        "properties":{
+          "title":{
+            "type": "string",
+            "format": "int64",
+            "example": "Hello World test"
+          },
+          "body": {
+            "type": "string",
+            "example": "Hello World body updated1"
+          },
+          "approved": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "SuccesfullAddArticle": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "title" :{
+                  "type":"string",
+                  "example":""
+                },
+                "body" :{
+                  "type":"string",
+                  "example":""
+                },
+                "approved" :{
+                  "type":"boolean",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+          }
+        }
+      },
+      "Item": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+            "type": "array",
+            "items": {
+              "type":"object",
+              "properties": {
+                "id" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "namaItem" :{
+                  "type":"string",
+                  "example":""
+                },
+                "qty" :{
+                  "type":"integer",
+                  "example":""
+                },
+                "approved" :{
+                  "type":"boolean",
+                  "example":""
+                },
+                "createdAt" :{
+                  "type":"string",
+                  "example":""
+                },
+                "updatedAt" :{
+                  "type":"string",
+                  "example":""
+                }
+              }
+            }
+          }
+        }
+      },
+      "addItem": {
+        "type": "object",
+        "properties":{
+          "namaItem":{
+            "type": "string",
+            "format": "int64",
+            "example": "Produk produk indonesia"
+          },
+          "qty": {
+            "type": "integer",
+            "example": 2
+          },
+          "approved": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "SuccesfullAddItem": {
+        "type":"object",
+        "properties":{
+          "status":{
+            "type": "integer",
+            "format": "int64",
+            "example": 200
+          },
+          "message":{
+            "type": "string",
+            "example": "Success"
+          },
+          "response":{
+            "type":"object",
+            "properties": {
+              "id" :{
+                "type":"integer",
+                "example":""
+              },
+              "namaItem" :{
+                "type":"string",
+                "example":""
+              },
+              "qty" :{
+                "type":"integer",
+                "example":""
+              },
+              "approved" :{
+                "type":"boolean",
+                "example":""
+              },
+              "createdAt" :{
+                "type":"string",
+                "example":""
+              },
+              "updatedAt" :{
+                "type":"string",
+                "example":""
+              }
+            }
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "##default"
+        }
+      }
+    },
+    "requestBodies": {
+      "Pet": {
+        "description": "Pet object that needs to be added to the store",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
+      "UserArray": {
+        "description": "List of user object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://petstore3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  }
+}
