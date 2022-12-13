@@ -4,20 +4,23 @@
     "password": "kemangtimur12",
     "database": "article_db_development",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": "1234"
   },
   "test": {
     "username": "postgres",
     "password": "kemangtimur12",
     "database": "article_db_test",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": "1234"
   },
   "production": {
     "username": "postgres",
     "password": "kemangtimur12",
     "database": "article_db_production",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": "1234"
   }
 }

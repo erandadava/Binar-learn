@@ -18,6 +18,10 @@
   ],
   "tags": [
     {
+      "name": "Auth",
+      "description": "Authorize before your doing"
+    },
+    {
       "name": "Product",
       "description": "Everything about your Product"
     }
